@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ExpenseController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -11,6 +12,15 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::prefix('expenses')->name('expenses.')->group(function (){
+        Route::get('', [ExpenseController::class, 'index'])->name('index');
+        Route::get('create', [ExpenseController::class, 'create'])->name('create');
+        Route::post('', [ExpenseController::class, 'store'])->name('store');
+        Route::get('/{expense}', [ExpenseController::class, 'edit'])->name('edit');
+        Route::patch('/{expense}', [ExpenseController::class, 'update'])->name('update');
+        Route::delete('/{expense}', [ExpenseController::class, 'delete'])->name('delete');
+    });
 
     Route::prefix('categories')->name('categories.')->group(function (){
         Route::get('', [CategoryController::class, 'index'])->name('index');
