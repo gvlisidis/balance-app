@@ -1,41 +1,50 @@
 <x-app-layout>
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white shadow-sm sm:rounded-lg ">
-                <div class="text-2xl font-semibold border-b-2 border-gray-400 flex items-center justify-between">
-                    <p class="p-6">Expenses</p>
-                    <div class="p-6">
-                        <a href="{{ route('expenses.create') }}"
-                           class="text-lg bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-md">Import from file</a>
-                    </div>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 bg-white rounded-md">
+            <div class="text-2xl font-semibold flex items-center justify-between">
+                <p class="p-6">Expenses</p>
+                <div class="p-6">
+                    <a href="{{ route('expenses.create') }}"
+                       class="text-lg bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-md">Import from
+                        file</a>
                 </div>
+            </div>
 
-                <div>
+            <div class="mt-10">
+                <table class="table table-auto w-full text-left">
+                    <thead>
+                    <tr>
+                        <th>Label</th>
+                        <th class="text-center">Amount</th>
+                        <th class="text-center">Type</th>
+                        <th class="text-center">Date Issued</th>
+                        <th class="text-right">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
                     @forelse($expenses as $expense)
-                        <div class="bg-white border-b border-gray-100 flex">
-                            <p
-                                class="w-80 px-6 py-4 font-medium text-gray-900 flex items-center">
-                                {{ \Illuminate\Support\Str::title($expense->label) }}
-                            </p>
-                            <div class="w-80 px-6 py-4 flex items-center space-x-4">
-                                <a href="{{ route('expenses.edit', $expense) }}"
-                                   class="font-medium bg-orange-500 hover:bg-orange-600 text-white py-2 px-4 rounded-md">Edit</a>
-                                <form action="{{ route('expenses.delete', $expense) }}" method="post">
-                                    @method('delete')
-                                    @csrf
-                                    <button type="submit"
-                                            class="font-medium bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-md">
-                                        Delete
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
+                        <tr class="border-b border-gray-300">
+                            <td class=" p-2">{{ \Illuminate\Support\Str::title($expense->label) }}</td>
+                            <td class="text-center p-2">
+                                {{ $expense->formatted_amount}}
+                            </td>
+                            <td class="text-center p-2 {{ $expense->type == 1 ? ' text-red-600 ' : ' text-green-600 ' }}">
+                                {{ $expense->formatted_type }}
+                            </td>
+                            <td class="text-center p-2">
+                                {{ $expense->issued_at->format('d/m/Y') }}
+                            </td>
+                            <td class="text-right p-2">
+                                Edit | Delete
+                            </td>
+                        </tr>
                     @empty
-                        <div class="p-8">
-                            <p class="text-gray-700 text-xl">No Expenses found</p>
-                        </div>
+                        <tr>
+                            <td>No expenses yet</td>
+                        </tr>
                     @endforelse
-                </div>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

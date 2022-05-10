@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\ExpensesImport;
 use App\Models\Expense;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ExpenseController extends Controller
 {
@@ -21,6 +23,8 @@ class ExpenseController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->file('monthly_expenses'));
+        Excel::import(new ExpensesImport(), request()->file('monthly_expenses'));
+
+        return to_route('expenses.index');
     }
 }

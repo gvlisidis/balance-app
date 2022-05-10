@@ -15,14 +15,12 @@ return new class extends Migration
     {
         Schema::create('expenses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('category_id')->constrained();
+            $table->foreignId('user_id')->index()->constrained();
+            $table->foreignId('category_id')->index()->constrained();
             $table->string('label');
-            $table->string('type');
-            $table->integer('amount');
-
-            $table->unsignedInteger('month');
-            $table->unsignedInteger('year');
+            $table->unsignedInteger('type')->index();
+            $table->unsignedInteger('amount')->default(null);
+            $table->date('issued_at');
             $table->timestamps();
         });
     }
