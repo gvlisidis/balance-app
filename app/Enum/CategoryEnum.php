@@ -4,7 +4,10 @@ namespace App\Enum;
 
 enum CategoryEnum: string
 {
-    case SUPER_MARKET = 'super market';
+    case UNCATEGORIZED = 'uncategorized';
+    case SALARY = 'salary';
+    case SUPERMARKET = 'supermarket';
+    case AMAZON = 'amazon';
     case FUEL = 'fuel';
     case ENERGY = 'energy';
     case INTERNET = 'internet';
@@ -29,7 +32,6 @@ enum CategoryEnum: string
     case FOOTBALL = 'football';
     case HOLIDAYS = 'holidays';
     case GIFF_GAFF = 'giff gaff';
-    case AMAZON_PRIME = 'amazon prime';
     case ANESTIS_PRESENTS = 'anestis presents';
     case KLEIO_PRESENTS = 'kleio presents';
     case PRESENTS = 'presents';
@@ -41,4 +43,8 @@ enum CategoryEnum: string
     case KIDS_DINNER = 'kids dinner';
     case CLOTHES = 'clothes';
     case HAIRCUT = 'haircut';
+    case BOOTS = 'boots';
+    case ROBLOX = 'roblox';
+    case ARGOS_VOUCHER = 'argos voucher';
+    case MY_CASHBACK = 'my cashback';
 }

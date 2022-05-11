@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('expenses', function (Blueprint $table) {
+        Schema::create('keywords', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->index()->constrained();
-            $table->foreignId('category_id')->default(1)->index()->constrained();
-            $table->string('label');
-            $table->unsignedInteger('type')->index();
-            $table->unsignedInteger('amount')->default(null);
-            $table->date('issued_at');
+            $table->json('keywords');
+            $table->foreignId('category_id')->default(1)->constrained();
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('expenses');
+        Schema::dropIfExists('keywords');
     }
 };

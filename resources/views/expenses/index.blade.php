@@ -16,6 +16,7 @@
                     <tr>
                         <th>Label</th>
                         <th class="text-center">Amount</th>
+                        <th class="text-center">Category</th>
                         <th class="text-center">Type</th>
                         <th class="text-center">Date Issued</th>
                         <th class="text-right">Actions</th>
@@ -26,7 +27,10 @@
                         <tr class="border-b border-gray-300">
                             <td class=" p-2">{{ \Illuminate\Support\Str::title($expense->label) }}</td>
                             <td class="text-center p-2">
-                                {{ $expense->formatted_amount}}
+                                &#163;{{ $expense->formatted_amount}}
+                            </td>
+                            <td class="text-center p-2">
+                                {{ \Illuminate\Support\Str::title($expense->category->name) }}
                             </td>
                             <td class="text-center p-2 {{ $expense->type == 1 ? ' text-red-600 ' : ' text-green-600 ' }}">
                                 {{ $expense->formatted_type }}
