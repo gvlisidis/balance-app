@@ -41,10 +41,10 @@ class Expense extends Model
         return number_format( $this->getAttribute( 'amount' ) / 100, 2 );
     }
 
-    public function setAmountAttribute( $amount ): void
-    {
-        $this->attributes['amount'] = (float) (abs($amount)) * 100;
-    }
+//    public function setAmountAttribute( $amount ): void
+//    {
+//        $this->attributes['amount'] = (float) (abs($amount)) * 100;
+//    }
 
     public function getFormattedTypeAttribute(): string
     {

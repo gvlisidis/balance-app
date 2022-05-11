@@ -6,8 +6,8 @@
                     @method('patch')
                     @csrf
                     <div>
-                        <label for="title">Title</label>
-                        <input type="text" id="title" name="title" class="h-10 rounded-sm text-gray-700 px-3 w-96 ml-5" value="{{ $category->title }}" />
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" class="h-10 rounded-sm text-gray-700 px-3 w-96 ml-5" value="{{ $category->name }}" />
                     </div>
                     <button class="font-medium ml-5 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md">Update</button>
                 </form>

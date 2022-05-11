@@ -22,7 +22,7 @@ class ExpensesImport implements ToModel
             'user_id' => auth()->id(),
             'category_id' => $helper->assignCategory($row[1]),
             'label' => $row[1],
-            'amount' => $row[2] ?? $row[3],
+            'amount' => $row[2] ? $helper->formatAmount($row[2]) : $helper->formatAmount($row[3]),
             'issued_at' => $helper->formatDate($row[0]),
             'type' => $row[2] ? Expense::DEBIT : Expense::CREDIT,
         ]);
