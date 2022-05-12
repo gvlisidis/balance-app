@@ -22,8 +22,7 @@ class ExpenseEdit extends Component
         $this->category_id = $this->expense->category_id;
         $this->amount = $this->expense->amount;
         $this->user_id = $this->expense->user_id;
-        $this->categories = Category::all();
-        $this->users = User::all();
+        $this->issued_at = $this->expense->issued_at->format('d/m/Y');
     }
     public function render()
     {

@@ -20,7 +20,7 @@
         @livewireStyles
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen bg-custom-gray">
             @include('layouts.navigation')
 
             <!-- Page Content -->
@@ -28,7 +28,6 @@
                 {{ $slot }}
             </main>
         </div>
-
         @livewireScripts
     </body>
 </html>
