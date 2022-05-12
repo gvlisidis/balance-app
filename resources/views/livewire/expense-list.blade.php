@@ -30,9 +30,11 @@
                    class="text-sm bg-slate-500 hover:bg-slate-600 text-white py-2 px-4 rounded-sm">Import Manually</a>
             </div>
         </div>
+        @if($openEditModal)
+            @include('livewire.expense-edit')
+        @endif
 
         <div class="mt-10">
-
             <table class="table table-auto w-full text-left">
                 <thead>
                 <tr class="border-2 border-custom-brown bg-custom-brown text-white text-base">
@@ -64,10 +66,8 @@
 
 
                         <td class="p-2 flex justify-center space-x-4">
-                            <livewire:expense-edit :expense="$expense" :categories="$categories" :users="$users"
-                                                   wire:key="{{$expense->id}}"></livewire:expense-edit>
                             <button
-                                @click="editModalOpen=true"
+                                wire:click="edit({{ $expense->id}})"
                                 class="bg-custom-green text-white font-semibold py-2 px-4 rounded-sm">Edit
                             </button>
                             <button
