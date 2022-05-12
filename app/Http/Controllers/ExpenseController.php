@@ -17,9 +17,7 @@ class ExpenseController extends Controller
 {
     public function index()
     {
-        return view('expenses.index', [
-            'expenses' => Expense::all(),
-        ]);
+        return view('expenses.index');
     }
 
     public function create()
