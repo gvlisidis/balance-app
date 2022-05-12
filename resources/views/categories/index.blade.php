@@ -15,7 +15,7 @@
                         <div class="bg-white border-b border-gray-100 flex">
                             <p
                                 class="w-80 px-6 py-4 font-medium text-gray-900 flex items-center">
-                                {{ \Illuminate\Support\Str::title($category->title) }}
+                                {{ \Illuminate\Support\Str::title($category->name) }}
                             </p>
                             <div class="w-80 px-6 py-4 flex items-center space-x-4">
                                 <a href="{{ route('categories.edit', $category) }}"

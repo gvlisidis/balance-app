@@ -22,7 +22,7 @@ enum CategoryEnum: string
     case TEES_ACTIVE = 'tees active';
     case O2 = 'o2';
     case MORTGAGE = 'mortgage';
-    case LOVE_ADMIN = 'love admin';
+    case LOVE_ADMIN = 'gymnastics';
     case INSPIRE_BEAUTY = 'inspire beauty';
     case NETFLIX = 'netflix';
     case DISNEY_PLUS = 'disney plus';
@@ -47,4 +47,6 @@ enum CategoryEnum: string
     case ROBLOX = 'roblox';
     case ARGOS_VOUCHER = 'argos voucher';
     case MY_CASHBACK = 'my cashback';
+    case BOOKS = 'books';
+    case LEISURE = 'leisure';
 }

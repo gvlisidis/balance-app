@@ -34,6 +34,7 @@ class ExpenseFormatterAction
 
     public function formatAmount($amount): int
     {
-        return abs($amount * 100);
+        logger()->info($amount . ' , ');
+        return abs(trim($amount) * 100);
     }
 }
