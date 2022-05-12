@@ -22,6 +22,7 @@ return new class extends Migration
             $table->unsignedInteger('amount')->default(null);
             $table->date('issued_at');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
