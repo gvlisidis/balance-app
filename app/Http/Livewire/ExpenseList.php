@@ -12,7 +12,6 @@ class ExpenseList extends Component
 {
     use WithPagination;
 
-   // public $expenses;
     public $totalMonthDebit = 0;
     public $totalMonthCredit = 0;
     public $selectedMonth = 4;
@@ -28,8 +27,6 @@ class ExpenseList extends Component
         $this->categories = Category::all();
         $this->users = User::all();
     }
-
-
 
     public function render()
     {

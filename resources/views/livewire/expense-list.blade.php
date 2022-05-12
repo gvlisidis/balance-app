@@ -46,7 +46,7 @@
                 </thead>
                 <tbody class="border-2 border-gray-300 text-sm">
                 @forelse($expenses as $expense)
-                    <tr class="border-b border-gray-300 hover:bg-gray-100" x-data="{ editModalOpen: false }">
+                    <tr class="border-b border-gray-300 hover:bg-gray-100" x-data="{ editModalOpen: false, confirmDeleteOpen: false }">
 
                         <td class=" p-2">{{ \Illuminate\Support\Str::title($expense->label) }}</td>
                         <td class="text-center p-2 {{ $expense->type == 1 ? ' text-red-600 ' : ' text-green-600 ' }}">
@@ -61,19 +61,21 @@
                         <td class="text-center p-2">
                             {{ $expense->issued_at->format('d/m/Y') }}
                         </td>
-                        <td class="p-2 flex justify-center">
-                            <livewire:expense-edit :expense="$expense" :categories="$categories" :users="$users" wire:key="{{$expense->id}}"></livewire:expense-edit>
+
+
+                        <td class="p-2 flex justify-center space-x-4">
+                            <livewire:expense-edit :expense="$expense" :categories="$categories" :users="$users"
+                                                   wire:key="{{$expense->id}}"></livewire:expense-edit>
                             <button
                                 @click="editModalOpen=true"
-                                class="bg-custom-green text-white font-semibold py-2 px-4 rounded-sm">Edit</button>
-                            <form action="{{ route('expenses.delete', $expense) }}" method="post" class="ml-2">
-                                @method('delete')
-                                @csrf
-                                <button type="submit"
-                                        class="font-semibold bg-custom-red text-white  py-2 px-4 rounded-sm">
-                                    Delete
-                                </button>
-                            </form>
+                                class="bg-custom-green text-white font-semibold py-2 px-4 rounded-sm">Edit
+                            </button>
+                            <button
+                                @click="confirmDeleteOpen = true"
+                                class="font-semibold bg-custom-red text-white  py-2 px-4 rounded-sm">
+                                Delete
+                            </button>
+                            <x-confirm-delete :expense="$expense"></x-confirm-delete>
                         </td>
                     </tr>
                 @empty
