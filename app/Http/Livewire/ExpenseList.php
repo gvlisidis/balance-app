@@ -14,7 +14,14 @@ use NumberFormatter;
 class ExpenseList extends Component
 {
     use WithPagination;
+    protected $listeners = [
+        'categoryUpdated' => 'getResults',
+        'paginationUpdated' => 'getResults',
+    ];
+
     public $searchTerm = '';
+    public $selectedCategory = 'all';
+    public $perPage = '10';
 
     public $totalMonthDebit;
     public $totalMonthCredit;
@@ -123,13 +130,18 @@ class ExpenseList extends Component
             Expense::CREDIT)->sum('amount');
         $this->totalMonthDebit = Expense::query()->whereMonth('issued_at', $this->selectedMonth)->where('type',
             Expense::DEBIT)->sum('amount');
+        $this->categories = Category::all();
     }
 
     public function getResults()
     {
-        return Expense::with('category')->when($this->searchTerm, function ($query){
-            $query->where('label', 'LIKE', '%' . $this->searchTerm . '%');
-        })->paginate(10);
+        return Expense::with('category')
+            ->when($this->searchTerm, function ($query) {
+                $query->where('label', 'LIKE', '%'.$this->searchTerm.'%');
+            })->when($this->selectedCategory !== 'all', function ($query) {
+                $query->where('category_id', $this->selectedCategory);
+            })
+            ->paginate($this->perPage);
     }
 
     public function render()

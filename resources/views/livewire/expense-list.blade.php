@@ -39,12 +39,32 @@
         @endif
 
         <div class="mt-10">
-            <div class="my-2">
-                <input
-                    autocomplete="off"
-                    type="search" wire:model.debounce.800ms="searchTerm" name="search"
-                       placeholder="Search for... "
-                       class="rounded-sm shadow-sm h-8  text-gray-600 px-3 border border-gray-400 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+            <div class="my-2 flex justify-between items-center ">
+                <div class="h-full flex items-center">
+                    <input
+                        autocomplete="off"
+                        type="search" wire:model.debounce.800ms="searchTerm" name="search"
+                        placeholder="Search for... "
+                        class="h-8 rounded-sm shadow-sm text-gray-600 px-3 border border-gray-400 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-xs" />
+                    <div class="ml-4 flex items-center">
+                        <p class="text-sm text-gray-600">Category: </p>
+                        <select wire:model.defer="selectedCategory" wire:change.debounce500ms="$emit('categoryUpdated')" name="selectedCategory" id="" class="h-full ml-2 rounded-sm text-gray-600 border border-gray-400 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-xs">
+                            <option value="all">All</option>
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}">{{ \Illuminate\Support\Str::title($category->name) }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="h-full flex items-center">
+                    <p class="text-sm text-gray-600">Results per page: </p>
+                    <select name="perPage" wire:model.defer="perPage" wire:change.debounce500ms="$emit('paginationUpdated')" class="ml-2 h-full rounded-sm text-gray-600 border border-gray-400 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-xs">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                        <option value="40">40</option>
+                    </select>
+                </div>
             </div>
             <x-expenses.table :expenses="$expenses"></x-expenses.table>
             <div class="mt-2">
