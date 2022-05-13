@@ -34,6 +34,10 @@
             @include('livewire.expense-edit')
         @endif
 
+        @if($openDeleteModal)
+            @include('livewire.expense-delete')
+        @endif
+
         <div class="mt-10">
             <table class="table table-auto w-full text-left">
                 <thead>
@@ -67,15 +71,14 @@
 
                         <td class="p-2 flex justify-center space-x-4">
                             <button
-                                wire:click="edit({{ $expense->id}})"
+                                wire:click.prevent="edit({{ $expense->id}})"
                                 class="bg-custom-green text-white font-semibold py-2 px-4 rounded-sm">Edit
                             </button>
                             <button
-                                @click="confirmDeleteOpen = true"
+                                wire:click.prevent="confirmDeleteModal({{ $expense->id }})"
                                 class="font-semibold bg-custom-red text-white  py-2 px-4 rounded-sm">
                                 Delete
                             </button>
-                            <x-confirm-delete :expense="$expense"></x-confirm-delete>
                         </td>
                     </tr>
                 @empty

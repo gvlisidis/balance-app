@@ -15,12 +15,13 @@ class ExpenseList extends Component
 {
     use WithPagination;
 
-    public $totalMonthDebit = 0;
-    public $totalMonthCredit = 0;
+    public $totalMonthDebit;
+    public $totalMonthCredit;
     public $selectedMonth = 4;
     public $categories;
     public $users;
     public $openEditModal = false;
+    public $openDeleteModal = false;
     public $expense;
     public $amount, $category_id, $user_id, $issued_at, $type, $label;
 
@@ -38,9 +39,19 @@ class ExpenseList extends Component
         $this->openEditModal = true;
     }
 
+    public function openDeleteModal()
+    {
+        $this->openDeleteModal = true;
+    }
+
     public function closeEditModal()
     {
         $this->openEditModal = false;
+    }
+
+    public function closeDeleteModal()
+    {
+        $this->openDeleteModal = false;
     }
 
     public function edit($id)
@@ -70,21 +81,43 @@ class ExpenseList extends Component
             'category_id' => $this->category_id,
             'user_id' => $this->user_id,
             'label' => $this->label,
-            'issued_at' => Carbon::createFromFormat('d/m/Y',  $this->issued_at)->format('Y-m-d'),
+            'issued_at' => Carbon::createFromFormat('d/m/Y', $this->issued_at)->format('Y-m-d'),
         ]);
 
         $this->closeEditModal();
         $this->reset();
     }
 
+    public function confirmDeleteModal($id)
+    {
+        $expense = Expense::findOrFail($id);
+        $this->expense = $expense;
+
+        $this->openDeleteModal();
+    }
+
+    public function delete($id)
+    {
+        $expense = Expense::findOrFail($id);
+        $expense->delete();
+
+        $this->closeDeleteModal();
+        $this->reset();
+    }
+
+    public function getData()
+    {
+        $this->totalMonthCredit = Expense::query()->whereMonth('issued_at', $this->selectedMonth)->where('type',
+            Expense::CREDIT)->sum('amount');
+        $this->totalMonthDebit = Expense::query()->whereMonth('issued_at', $this->selectedMonth)->where('type',
+            Expense::DEBIT)->sum('amount');
+    }
+
     public function render()
     {
+        $this->getData();
         return view('livewire.expense-list', [
             'expenses' => Expense::with('category')->paginate(10),
-            'totalMonthCredit' => Expense::query()->whereMonth('issued_at', $this->selectedMonth)->where('type',
-                Expense::CREDIT)->sum('amount'),
-            'totalMonthDebit' => Expense::query()->whereMonth('issued_at', $this->selectedMonth)->where('type',
-                Expense::DEBIT)->sum('amount'),
         ]);
     }
 }
