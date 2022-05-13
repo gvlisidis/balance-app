@@ -14,6 +14,7 @@ use NumberFormatter;
 class ExpenseList extends Component
 {
     use WithPagination;
+    public $searchTerm = '';
 
     public $totalMonthDebit;
     public $totalMonthCredit;
@@ -33,6 +34,17 @@ class ExpenseList extends Component
         'type' => 'required|integer',
         'amount' => 'required',
     ];
+
+    public function clearSearchTerm()
+    {
+        $this->resetPage();
+    }
+
+    public function updatingSearch()
+
+    {
+        $this->resetPage();
+    }
 
     public function openEditModal()
     {
@@ -113,11 +125,18 @@ class ExpenseList extends Component
             Expense::DEBIT)->sum('amount');
     }
 
+    public function getResults()
+    {
+        return Expense::with('category')->when($this->searchTerm, function ($query){
+            $query->where('label', 'LIKE', '%' . $this->searchTerm . '%');
+        })->paginate(10);
+    }
+
     public function render()
     {
         $this->getData();
         return view('livewire.expense-list', [
-            'expenses' => Expense::with('category')->paginate(10),
+            'expenses' => $this->getResults(),
         ]);
     }
 }
