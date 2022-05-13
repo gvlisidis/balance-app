@@ -15,35 +15,35 @@
                 @csrf
                 <div class="grid grid-cols-2 gap-6">
                     <div class="flex flex-col space-y-1 text-xs md:text-sm">
-                        <label for="label" class="font-semibold text-gray-600">Label</label>
-                        <input type="text" wire:model.debounce.500ms="label" id="label" name="label" class="rounded-sm text-gray-600 px-3 border border-gray-400" value="" />
+                        <x-label for="label" class="font-semibold text-gray-600">Label</x-label>
+                        <x-input type="text" wire:model.debounce.500ms="label" id="label" name="label" class="rounded-sm text-gray-600 px-3 border border-gray-400" value="" />
                     </div>
                     <div class="flex flex-col space-y-1 text-xs md:text-sm">
                         <label for="category_id" class="font-semibold text-gray-600">Category</label>
-                        <select wire:model.debounce.500ms="category_id" name="category_id" id="category_id" class="rounded-sm text-gray-600 border border-gray-400">
+                        <select wire:model.defer="category_id" name="category_id" id="category_id" class="rounded-sm text-gray-600 border border-gray-400 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                             @foreach($categories as $category)
-                                <option value="{{ $category->id }}" {{ $category->id == $category_id ? 'selected' : '' }}>{{ \Illuminate\Support\Str::title($category->name) }}</option>
+                                <option value="{{ $category->id }}" {{ $category->id === $category_id ? 'selected' : '' }}>{{ \Illuminate\Support\Str::title($category->name) }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="flex flex-col space-y-1 text-xs md:text-sm">
-                        <label for="amount" class="font-semibold text-gray-600">Amount</label>
-                        <input type="text" wire:model.debounce.500ms="amount" id="amount" name="amount" class="rounded-sm text-gray-600 px-3 border border-gray-400" value="" />
+                        <x-label for="amount" class="font-semibold text-gray-600">Amount</x-label>
+                        <x-input type="text" wire:model.debounce.500ms="amount" id="amount" name="amount" class="rounded-sm text-gray-600 px-3 border border-gray-400" value="" />
                     </div>
                     <div class="flex flex-col space-y-1 text-xs md:text-sm">
-                        <label for="type" class="font-semibold text-gray-600">Type</label>
-                        <select wire:model.debounce.500ms="type" name="type" id="type" class="rounded-sm text-gray-600 border border-gray-400">
+                        <x-label for="type" class="font-semibold text-gray-600">Type</x-label>
+                        <select wire:model.defer="type" name="type" id="type" class="rounded-sm text-gray-600 border border-gray-400 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                             <option value="{{ \App\Models\Expense::DEBIT }}" {{ $type ==  \App\Models\Expense::DEBIT ? 'selected' : '' }}>{{ \Illuminate\Support\Str::title(\App\Models\Expense::EXPENSE_TYPE[\App\Models\Expense::DEBIT]) }}</option>
                             <option value="{{ \App\Models\Expense::CREDIT }}" {{ $type ==  \App\Models\Expense::CREDIT ? 'selected' : '' }}>{{ \Illuminate\Support\Str::title(\App\Models\Expense::EXPENSE_TYPE[\App\Models\Expense::CREDIT]) }}</option>
                         </select>
                     </div>
                     <div class="flex flex-col space-y-1 text-xs md:text-sm">
-                        <label for="issued_at" class="font-semibold text-gray-600">Issue Date</label>
-                        <input type="text" wire:model.debounce.500ms="issued_at" id="issued_at" name="issued_at" class="rounded-sm text-gray-600 px-3 border border-gray-400" value="" />
+                        <x-label for="issued_at" class="font-semibold text-gray-600">Issue Date</x-label>
+                        <x-input type="text" wire:model.debounce.500ms="issued_at" id="issued_at" name="issued_at" class="rounded-sm text-gray-600 px-3 border border-gray-400" value="" />
                     </div>
                     <div class="flex flex-col space-y-1 text-xs md:text-sm">
-                        <label for="user_id" class="font-semibold text-gray-600">User</label>
-                        <select wire:model.debounce.500ms="user_id" name="user_id" id="user_id" class="rounded-sm text-gray-600 border border-gray-400">
+                        <x-label for="user_id" class="font-semibold text-gray-600">User</x-label>
+                        <select wire:model.defer="user_id" name="user_id" id="user_id" class="rounded-sm text-gray-600 border border-gray-400 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                             @foreach($users as $user)
                                 <option value="{{ $user->id }}" {{ $user->id  == $user_id ? 'selected' : '' }}>{{ \Illuminate\Support\Str::title($user->name) }}</option>
                             @endforeach
