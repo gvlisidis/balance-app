@@ -39,7 +39,7 @@
         @endif
 
         <div class="mt-10">
-            <div class="my-2 flex justify-between items-center ">
+            <div class="mt-2 mb-4 flex justify-between items-center ">
                 <div class="h-full flex items-center">
                     <input
                         autocomplete="off"
