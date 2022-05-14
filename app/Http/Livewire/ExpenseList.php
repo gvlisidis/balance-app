@@ -16,16 +16,19 @@ class ExpenseList extends Component
     use WithPagination;
     protected $listeners = [
         'categoryUpdated' => 'getResults',
+        'monthUpdated' => 'getResults',
         'paginationUpdated' => 'getResults',
+        'typeUpdated' => 'getResults',
     ];
 
     public $searchTerm = '';
     public $selectedCategory = 'all';
+    public $selectedType= 'all';
+    public $selectedMonth= 13;
     public $perPage = '10';
 
     public $totalMonthDebit;
     public $totalMonthCredit;
-    public $selectedMonth = 4;
     public $categories;
     public $users;
     public $openEditModal = false;
@@ -41,6 +44,11 @@ class ExpenseList extends Component
         'type' => 'required|integer',
         'amount' => 'required',
     ];
+
+    public function mount()
+    {
+        $this->selectedMonth = now()->month - 2;
+    }
 
     public function clearSearchTerm()
     {
@@ -126,20 +134,37 @@ class ExpenseList extends Component
 
     public function getData()
     {
-        $this->totalMonthCredit = Expense::query()->whereMonth('issued_at', $this->selectedMonth)->where('type',
-            Expense::CREDIT)->sum('amount');
-        $this->totalMonthDebit = Expense::query()->whereMonth('issued_at', $this->selectedMonth)->where('type',
-            Expense::DEBIT)->sum('amount');
+        $this->totalMonthCredit = Expense::query()
+            ->when($this->selectedMonth < 13, function ($query){
+                $query->whereMonth('issued_at', $this->selectedMonth + 1);
+            })
+            ->where('type',Expense::CREDIT)
+            ->sum('amount');
+
+        $this->totalMonthDebit = Expense::query()
+            ->when($this->selectedMonth < 13, function ($query){
+                $query->whereMonth('issued_at', $this->selectedMonth + 1);
+            })
+            ->where('type',Expense::DEBIT)
+            ->sum('amount');
+
         $this->categories = Category::all();
     }
 
     public function getResults()
     {
         return Expense::with('category')
+            ->when($this->selectedMonth < 13, function ($query){
+                $query->whereMonth('issued_at', $this->selectedMonth + 1);
+            })
+            ->whereYear('issued_at', now()->year)
             ->when($this->searchTerm, function ($query) {
                 $query->where('label', 'LIKE', '%'.$this->searchTerm.'%');
             })->when($this->selectedCategory !== 'all', function ($query) {
                 $query->where('category_id', $this->selectedCategory);
+            })
+            ->when($this->selectedType !== 'all', function ($query){
+                $query->where('type', $this->selectedType);
             })
             ->paginate($this->perPage);
     }

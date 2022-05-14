@@ -12,10 +12,6 @@ class ExpenseFormatterAction
 {
     public function formatDate($expenseDate): string
     {
-        if ($expenseDate == 'Pending') {
-            return Carbon::createFromFormat('d/m/Y', '28/04/2022')->format('Y-m-d');
-        }
-
         return Carbon::createFromFormat('d/m/Y', $expenseDate)->format('Y-m-d');
     }
 
@@ -35,6 +31,6 @@ class ExpenseFormatterAction
     public function formatAmount($amount): int
     {
         logger()->info($amount . ' , ');
-        return abs(trim($amount) * 100);
+        return abs($amount) * 100;
     }
 }
