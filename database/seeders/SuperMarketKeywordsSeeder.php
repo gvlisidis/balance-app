@@ -19,7 +19,7 @@ class SuperMarketKeywordsSeeder extends Seeder
     {
         // SUPERMARKET
         Keyword::create( [
-            'keywords' => ['aldi', 'tesco store', 'morrisons store', 'lidl', 'sainsbury\'s'],
+            'keywords' => ['aldi', 'tesco store', 'morrisons store', 'lidl', 'sainsbury\'s', 'morrisons stockton gbr', 'morrisons stockton'],
             'category_id' => Category::query()->where('name', 'LIKE', CategoryEnum::SUPERMARKET->value)->first()->id,
         ]);
 
@@ -54,7 +54,7 @@ class SuperMarketKeywordsSeeder extends Seeder
         ]);
 
         Keyword::create( [
-            'keywords' => ['sports direct', 'next', 'marks&spencer plc internet vis', 'marks&spencer', 'marks&spencer plc teesside'],
+            'keywords' => ['sports direct', 'next', 'marks&spencer plc internet vis', 'marks&spencer', 'marks&spencer plc teesside', 'marks & spencer'],
             'category_id' => Category::query()->where('name', 'LIKE', CategoryEnum::CLOTHES->value)->first()->id,
         ]);
 
@@ -64,7 +64,7 @@ class SuperMarketKeywordsSeeder extends Seeder
         ]);
 
         Keyword::create( [
-            'keywords' => ['multi media creati'],
+            'keywords' => ['multi media creati', 'multi media', 'johnson matthey em cr'],
             'category_id' => Category::query()->where('name', 'LIKE', CategoryEnum::SALARY->value)->first()->id,
         ]);
 
@@ -111,6 +111,36 @@ class SuperMarketKeywordsSeeder extends Seeder
         Keyword::create( [
             'keywords' => ['rust l t old 3 newsam rent so', 'rust l'],
             'category_id' => Category::query()->where('name', 'LIKE', CategoryEnum::MORTGAGE->value)->first()->id,
+        ]);
+
+        Keyword::create( [
+            'keywords' => ['unite the union dd', 'unite the union', 'the union'],
+            'category_id' => Category::query()->where('name', 'LIKE', CategoryEnum::UNITE->value)->first()->id,
+        ]);
+
+        Keyword::create( [
+            'keywords' => ['hsbc plc loans dd', 'hsbc plc loans', 'plc loans'],
+            'category_id' => Category::query()->where('name', 'LIKE', CategoryEnum::CAR_LOAN->value)->first()->id,
+        ]);
+
+        Keyword::create( [
+            'keywords' => ['netflix.com los gatos vis', 'netflix.com', 'tv licence mbp dd', 'tv licence'],
+            'category_id' => Category::query()->where('name', 'LIKE', CategoryEnum::TV->value)->first()->id,
+        ]);
+
+        Keyword::create( [
+            'keywords' => ['tax free childcare', 'childcare'],
+            'category_id' => Category::query()->where('name', 'LIKE', CategoryEnum::CHILDCARE->value)->first()->id,
+        ]);
+
+        Keyword::create( [
+            'keywords' => ['df coaching'],
+            'category_id' => Category::query()->where('name', 'LIKE', CategoryEnum::FOOTBALL->value)->first()->id,
+        ]);
+
+        Keyword::create( [
+            'keywords' => ['mcdonalds uk stockton on t vis', 'mcdonalds'],
+            'category_id' => Category::query()->where('name', 'LIKE', CategoryEnum::JUNK_FOOD->value)->first()->id,
         ]);
 
     }

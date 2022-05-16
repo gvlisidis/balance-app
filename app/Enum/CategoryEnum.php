@@ -24,9 +24,7 @@ enum CategoryEnum: string
     case MORTGAGE = 'mortgage';
     case LOVE_ADMIN = 'gymnastics';
     case INSPIRE_BEAUTY = 'inspire beauty';
-    case NETFLIX = 'netflix';
-    case DISNEY_PLUS = 'disney plus';
-    case GREEK_TV = 'greek tv';
+    case TV = 'tv';
     case KETTLE_BELLS = 'kettle bells';
     case RUNNING = 'running';
     case FOOTBALL = 'football';
@@ -49,4 +47,5 @@ enum CategoryEnum: string
     case MY_CASHBACK = 'my cashback';
     case BOOKS = 'books';
     case LEISURE = 'leisure';
+    case JUNK_FOOD = 'junk food';
 }
