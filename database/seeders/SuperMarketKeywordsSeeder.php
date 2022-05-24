@@ -69,7 +69,7 @@ class SuperMarketKeywordsSeeder extends Seeder
         ]);
 
         Keyword::create( [
-            'keywords' => ['webloyalty interna', 'webloyalty'],
+            'keywords' => ['webloyalty interna', 'webloyalty', 'cashback'],
             'category_id' => Category::query()->where('name', 'LIKE', CategoryEnum::MY_CASHBACK->value)->first()->id,
         ]);
 
@@ -104,7 +104,7 @@ class SuperMarketKeywordsSeeder extends Seeder
         ]);
 
         Keyword::create( [
-            'keywords' => ['vue cinema darlington', 'vue cinema', 'cinema'],
+            'keywords' => ['vue cinema darlington', 'vue cinema', 'cinema', 'vue entertainment ltd chiswick, lon gbr', 'vue entertainment'],
             'category_id' => Category::query()->where('name', 'LIKE', CategoryEnum::LEISURE->value)->first()->id,
         ]);
 
@@ -139,8 +139,28 @@ class SuperMarketKeywordsSeeder extends Seeder
         ]);
 
         Keyword::create( [
-            'keywords' => ['mcdonalds uk stockton on t vis', 'mcdonalds'],
+            'keywords' => ['mcdonalds uk stockton on t vis', 'mcdonalds', 'kfc - darlington d darlington', 'kfc', 'pollo', 'pollotogo', 'pollotogo stokesley snd'],
             'category_id' => Category::query()->where('name', 'LIKE', CategoryEnum::JUNK_FOOD->value)->first()->id,
+        ]);
+
+        Keyword::create( [
+            'keywords' => ['tees active limit dd', 'tees active'],
+            'category_id' => Category::query()->where('name', 'LIKE', CategoryEnum::TEES_ACTIVE->value)->first()->id,
+        ]);
+
+        Keyword::create( [
+            'keywords' => ['sbc council tax dd', 'council tax'],
+            'category_id' => Category::query()->where('name', 'LIKE', CategoryEnum::COUNCIL_TAX->value)->first()->id,
+        ]);
+
+        Keyword::create( [
+            'keywords' => ['k kourou- paradeli 32 home stick bp', 'kourou- paradeli', 'paradeli', 'kourou', 'kourou-'],
+            'category_id' => Category::query()->where('name', 'LIKE', CategoryEnum::KALIA->value)->first()->id,
+        ]);
+
+        Keyword::create( [
+            'keywords' => ['protyre co uk winchester gbr', 'protyre', 'dvla vehicle tax 0300 1234321 gbr', 'dvla', 'dvla vehicle tax'],
+            'category_id' => Category::query()->where('name', 'LIKE', CategoryEnum::CARS->value)->first()->id,
         ]);
 
     }

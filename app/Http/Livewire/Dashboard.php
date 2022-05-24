@@ -19,6 +19,8 @@ class Dashboard extends Component
     public int $gymnasticsTotal;
     public int $energyTotal;
     public int $childcareTotal;
+    public int $clothesTotal;
+    public int $kaliaTotal;
 
     protected $listeners = [
         //'categoryUpdated' => 'getResults',
@@ -78,6 +80,18 @@ class Dashboard extends Component
         return $helper->getCategoryTotal(CategoryEnum::CHILDCARE->value);
     }
 
+    public function clothesTotal()
+    {
+        $helper = new TotalAmountAction($this->filters());
+        return $helper->getCategoryTotal(CategoryEnum::CLOTHES->value);
+    }
+
+    public function kaliaTotal()
+    {
+        $helper = new TotalAmountAction($this->filters());
+        return $helper->getCategoryTotal(CategoryEnum::KALIA->value);
+    }
+
     public function getResults()
     {
         $this->superMarketTotal = $this->superMarketTotal();
@@ -86,6 +100,8 @@ class Dashboard extends Component
         $this->energyTotal = $this->energyTotal();
         $this->gymnasticsTotal = $this->gymnasticsTotal();
         $this->childcareTotal = $this->childcareTotal();
+        $this->clothesTotal = $this->clothesTotal();
+        $this->kaliaTotal = $this->kaliaTotal();
     }
 
     public function render()

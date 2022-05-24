@@ -48,4 +48,5 @@ enum CategoryEnum: string
     case BOOKS = 'books';
     case LEISURE = 'leisure';
     case JUNK_FOOD = 'junk food';
+    case KALIA = 'kalia';
 }
