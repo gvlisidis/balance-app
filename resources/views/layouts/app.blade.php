@@ -29,5 +29,6 @@
             </main>
         </div>
         @livewireScripts
+        @livewireChartsScripts
     </body>
 </html>

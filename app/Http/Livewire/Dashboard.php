@@ -2,10 +2,10 @@
 
 namespace App\Http\Livewire;
 
+use App\Actions\ChartsAction;
 use App\Actions\TotalAmountAction;
 use App\Enum\CategoryEnum;
-use App\Models\Category;
-use App\Models\Expense;
+use Illuminate\Support\Collection;
 use Livewire\Component;
 
 class Dashboard extends Component
@@ -21,6 +21,9 @@ class Dashboard extends Component
     public int $childcareTotal;
     public int $clothesTotal;
     public int $kaliaTotal;
+    public $superMarketChartData;
+    public $fuelChartData;
+    public $amazonChartData;
 
     protected $listeners = [
         //'categoryUpdated' => 'getResults',
@@ -33,7 +36,7 @@ class Dashboard extends Component
     {
         $this->selectedMonth = now()->month - 2;
         $this->selectedYear = now()->year;
-        $this->categories = Category::pluck('id', 'name')->toArray();
+        //$this->categories = Category::pluck('id', 'name')->toArray();
     }
 
     public function filters(): array
@@ -92,6 +95,28 @@ class Dashboard extends Component
         return $helper->getCategoryTotal(CategoryEnum::KALIA->value);
     }
 
+    public function getSupermarketChartData(): Collection
+    {
+        $helper = new ChartsAction($this->filters());
+
+        return $helper->getExpensesForCategory(CategoryEnum::SUPERMARKET->value);
+    }
+
+    public function getFuelChartData(): Collection
+    {
+        $helper = new ChartsAction($this->filters());
+
+        return $helper->getExpensesForCategory(CategoryEnum::FUEL->value);
+    }
+
+    public function getAmazonChartData(): Collection
+    {
+        $helper = new ChartsAction($this->filters());
+
+        return $helper->getExpensesForCategory(CategoryEnum::AMAZON->value);
+    }
+
+
     public function getResults()
     {
         $this->superMarketTotal = $this->superMarketTotal();
@@ -102,11 +127,20 @@ class Dashboard extends Component
         $this->childcareTotal = $this->childcareTotal();
         $this->clothesTotal = $this->clothesTotal();
         $this->kaliaTotal = $this->kaliaTotal();
+        $this->superMarketChartData = $this->getSupermarketChartData();
+        $this->fuelChartData = $this->getFuelChartData();
+        $this->amazonChartData = $this->getAmazonChartData();
     }
 
     public function render()
     {
+        $helper = new ChartsAction($this->filters());
         $this->getResults();
-        return view('livewire.dashboard');
+
+        return view('livewire.dashboard', [
+            'supermarketChart' => $helper->getExpensesForCharts($this->superMarketChartData, 'Supermarket expenses'),
+            'fuelChart' => $helper->getExpensesForCharts($this->fuelChartData, 'Fuel expenses'),
+            'amazonChart' => $helper->getExpensesForCharts($this->amazonChartData, 'Amazon expenses'),
+        ]);
     }
 }
