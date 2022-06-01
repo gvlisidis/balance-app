@@ -20,9 +20,9 @@
                     </div>
                     <div class="flex flex-col space-y-1 text-xs md:text-sm">
                         <label for="category_id" class="font-semibold text-gray-600">Category</label>
-                        <select wire:model.defer="category_id" name="category_id" id="category_id" class="rounded-sm text-gray-600 border border-gray-400 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        <select wire:model.lazy="category_id" name="category_id" id="category_id" class="rounded-sm text-gray-600 border border-gray-400 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                             @foreach($categories as $category)
-                                <option value="{{ $category->id }}" {{ $category->id === $category_id ? 'selected' : '' }}>{{ \Illuminate\Support\Str::title($category->name) }}</option>
+                                <option value="{{ $category->id }}">{{ \Illuminate\Support\Str::title($category->name) }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -32,9 +32,9 @@
                     </div>
                     <div class="flex flex-col space-y-1 text-xs md:text-sm">
                         <x-label for="type" class="font-semibold text-gray-600">Type</x-label>
-                        <select wire:model.defer="type" name="type" id="type" class="rounded-sm text-gray-600 border border-gray-400 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                            <option value="{{ \App\Models\Expense::DEBIT }}" {{ $type ==  \App\Models\Expense::DEBIT ? 'selected' : '' }}>{{ \Illuminate\Support\Str::title(\App\Models\Expense::EXPENSE_TYPE[\App\Models\Expense::DEBIT]) }}</option>
-                            <option value="{{ \App\Models\Expense::CREDIT }}" {{ $type ==  \App\Models\Expense::CREDIT ? 'selected' : '' }}>{{ \Illuminate\Support\Str::title(\App\Models\Expense::EXPENSE_TYPE[\App\Models\Expense::CREDIT]) }}</option>
+                        <select wire:model.lazy="type" name="type" id="type" class="rounded-sm text-gray-600 border border-gray-400 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                            <option value="{{ \App\Models\Expense::DEBIT }}">{{ \Illuminate\Support\Str::title(\App\Models\Expense::EXPENSE_TYPE[\App\Models\Expense::DEBIT]) }}</option>
+                            <option value="{{ \App\Models\Expense::CREDIT }}">{{ \Illuminate\Support\Str::title(\App\Models\Expense::EXPENSE_TYPE[\App\Models\Expense::CREDIT]) }}</option>
                         </select>
                     </div>
                     <div class="flex flex-col space-y-1 text-xs md:text-sm">
@@ -43,9 +43,9 @@
                     </div>
                     <div class="flex flex-col space-y-1 text-xs md:text-sm">
                         <x-label for="user_id" class="font-semibold text-gray-600">User</x-label>
-                        <select wire:model.defer="user_id" name="user_id" id="user_id" class="rounded-sm text-gray-600 border border-gray-400 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        <select wire:model.lazy="user_id" name="user_id" id="user_id" class="rounded-sm text-gray-600 border border-gray-400 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                             @foreach($users as $user)
-                                <option value="{{ $user->id }}" {{ $user->id  == $user_id ? 'selected' : '' }}>{{ \Illuminate\Support\Str::title($user->name) }}</option>
+                                <option value="{{ $user->id }}">{{ \Illuminate\Support\Str::title($user->name) }}</option>
                             @endforeach
                         </select>
                     </div>

@@ -1,13 +1,15 @@
 <x-app-layout>
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white shadow-sm sm:rounded-lg h-52 p-10 ">
-                <form action="{{ route('expenses.upload-file') }}" method="post" class="flex items-center" enctype="multipart/form-data">
+        <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white shadow-sm sm:rounded-lg h-fit p-10 ">
+                <form action="{{ route('expenses.upload-file') }}" method="post" class="flex flex-col space-y-4" enctype="multipart/form-data">
                     @csrf
                     <div>
-                        <input type="file" name="monthly_expenses" class="h-10 rounded-sm text-gray-700 px-3 w-96 ml-5" />
+                        <input type="file" name="monthly_expenses" class="h-10 rounded-sm text-gray-700 w-96" />
                     </div>
-                    <button class="font-medium ml-5 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md">Save</button>
+                    <div class="flex">
+                        <button class="font-medium bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md">Save</button>
+                    </div>
                 </form>
             </div>
         </div>

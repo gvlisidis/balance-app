@@ -112,7 +112,6 @@ class ExpenseList extends Component
         ]);
 
         $this->closeEditModal();
-        $this->reset();
     }
 
     public function confirmDeleteModal($id)
@@ -129,7 +128,6 @@ class ExpenseList extends Component
         $expense->delete();
 
         $this->closeDeleteModal();
-        $this->reset();
     }
 
     public function getData()

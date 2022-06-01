@@ -19,7 +19,7 @@ class ExpensesImport implements ToModel
         $helper = new ExpenseFormatterAction();
 
         return new Expense([
-            'user_id' => auth()->id(),
+            'user_id' => $row[4],
             'category_id' => $helper->assignCategory($row[1]),
             'label' => $row[1],
             'amount' => $row[2] ? $helper->formatAmount($row[2]) : $helper->formatAmount($row[3]),

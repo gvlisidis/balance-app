@@ -67,6 +67,7 @@ class ExpenseController extends Controller
 
     public function update(UpdateExpenseRequest $request, Expense $expense)
     {
+        dd(999);
         $data = $request->validated();
 
         $expense->update([

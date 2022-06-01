@@ -25,7 +25,7 @@ enum CategoryEnum: string
     case LOVE_ADMIN = 'gymnastics';
     case INSPIRE_BEAUTY = 'inspire beauty';
     case TV = 'tv';
-    case KETTLE_BELLS = 'kettle bells';
+    case FITNESS = 'fitness';
     case RUNNING = 'running';
     case FOOTBALL = 'football';
     case HOLIDAYS = 'holidays';

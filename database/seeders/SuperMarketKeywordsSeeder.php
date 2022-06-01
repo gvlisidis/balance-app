@@ -104,7 +104,7 @@ class SuperMarketKeywordsSeeder extends Seeder
         ]);
 
         Keyword::create( [
-            'keywords' => ['vue cinema darlington', 'vue cinema', 'cinema', 'vue entertainment ltd chiswick, lon gbr', 'vue entertainment'],
+            'keywords' => ['vue cinema darlington', 'vue cinema', 'cinema', 'vue entertainment ltd chiswick, lon gbr', 'vue entertainment', 'showcase teesside w internet gbr', 'showcase teesside', 'showcase'],
             'category_id' => Category::query()->where('name', 'LIKE', CategoryEnum::LEISURE->value)->first()->id,
         ]);
 
@@ -124,7 +124,7 @@ class SuperMarketKeywordsSeeder extends Seeder
         ]);
 
         Keyword::create( [
-            'keywords' => ['netflix.com los gatos vis', 'netflix.com', 'tv licence mbp dd', 'tv licence'],
+            'keywords' => ['netflix.com los gatos vis', 'netflix.com', 'tv licence mbp dd', 'tv licence', 'disney plus london gbr', 'disney plus'],
             'category_id' => Category::query()->where('name', 'LIKE', CategoryEnum::TV->value)->first()->id,
         ]);
 
@@ -134,7 +134,7 @@ class SuperMarketKeywordsSeeder extends Seeder
         ]);
 
         Keyword::create( [
-            'keywords' => ['df coaching'],
+            'keywords' => ['df coaching', 'eb *mini messis ag', '*mini messis', 'messis'],
             'category_id' => Category::query()->where('name', 'LIKE', CategoryEnum::FOOTBALL->value)->first()->id,
         ]);
 
@@ -154,13 +154,23 @@ class SuperMarketKeywordsSeeder extends Seeder
         ]);
 
         Keyword::create( [
-            'keywords' => ['k kourou- paradeli 32 home stick bp', 'kourou- paradeli', 'paradeli', 'kourou', 'kourou-'],
+            'keywords' => ['k kourou- paradeli 32 home stick bp', 'kourou- paradeli', 'paradeli', 'kourou', 'kourou-', 'candice dean banana set bp', 'candice dean'],
             'category_id' => Category::query()->where('name', 'LIKE', CategoryEnum::KALIA->value)->first()->id,
         ]);
 
         Keyword::create( [
             'keywords' => ['protyre co uk winchester gbr', 'protyre', 'dvla vehicle tax 0300 1234321 gbr', 'dvla', 'dvla vehicle tax'],
             'category_id' => Category::query()->where('name', 'LIKE', CategoryEnum::CARS->value)->first()->id,
+        ]);
+
+        Keyword::create( [
+            'keywords' => ['wly*completesave.c'],
+            'category_id' => Category::query()->where('name', 'LIKE', CategoryEnum::SUBSCRIPTION->value)->first()->id,
+        ]);
+
+        Keyword::create( [
+            'keywords' => ['paypal *kesafitnes 35314369001 vis', '*kesafitnes'],
+            'category_id' => Category::query()->where('name', 'LIKE', CategoryEnum::FITNESS->value)->first()->id,
         ]);
 
     }
