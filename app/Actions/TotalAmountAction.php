@@ -2,7 +2,6 @@
 
 namespace App\Actions;
 
-use App\Enum\CategoryEnum;
 use App\Models\Category;
 use App\Models\Expense;
 

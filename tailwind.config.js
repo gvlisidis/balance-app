@@ -19,6 +19,14 @@ module.exports = {
                 'custom-brown': '#7E685A',
                 'custom-green': '#AFD275'
             },
+            fontSize: {
+                xxs: ['0.625rem', {lineHeight: '1rem'}],
+                label: ['1.75rem', {lineHeight: '2,15rem'}]
+            },
+            padding: {
+                '1/3': '33.33333%',
+                '2/3': '66.66667%',
+            },
         },
     },
 

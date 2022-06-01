@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use App\Actions\ChartsAction;
 use App\Actions\TotalAmountAction;
 use App\Enum\CategoryEnum;
+use App\Services\ChartDataBuilder;
+use App\Services\TotalAmountBuilder;
 use Illuminate\Support\Collection;
 use Livewire\Component;
 
@@ -36,7 +38,6 @@ class Dashboard extends Component
     {
         $this->selectedMonth = now()->month - 2;
         $this->selectedYear = now()->year;
-        //$this->categories = Category::pluck('id', 'name')->toArray();
     }
 
     public function filters(): array
@@ -47,89 +48,23 @@ class Dashboard extends Component
         ];
     }
 
-    public function superMarketTotal()
-    {
-        $helper = new TotalAmountAction($this->filters());
-        return $helper->getCategoryTotal(CategoryEnum::SUPERMARKET->value);
-    }
-
-    public function amazonTotal()
-    {
-        $helper = new TotalAmountAction($this->filters());
-        return $helper->getCategoryTotal(CategoryEnum::AMAZON->value);
-    }
-
-    public function fuelTotal()
-    {
-        $helper = new TotalAmountAction($this->filters());
-        return $helper->getCategoryTotal(CategoryEnum::FUEL->value);
-    }
-
-    public function gymnasticsTotal()
-    {
-        $helper = new TotalAmountAction($this->filters());
-        return $helper->getCategoryTotal(CategoryEnum::LOVE_ADMIN->value);
-    }
-
-    public function energyTotal()
-    {
-        $helper = new TotalAmountAction($this->filters());
-        return $helper->getCategoryTotal(CategoryEnum::ENERGY->value);
-    }
-
-    public function childcareTotal()
-    {
-        $helper = new TotalAmountAction($this->filters());
-        return $helper->getCategoryTotal(CategoryEnum::CHILDCARE->value);
-    }
-
-    public function clothesTotal()
-    {
-        $helper = new TotalAmountAction($this->filters());
-        return $helper->getCategoryTotal(CategoryEnum::CLOTHES->value);
-    }
-
-    public function kaliaTotal()
-    {
-        $helper = new TotalAmountAction($this->filters());
-        return $helper->getCategoryTotal(CategoryEnum::KALIA->value);
-    }
-
-    public function getSupermarketChartData(): Collection
-    {
-        $helper = new ChartsAction($this->filters());
-
-        return $helper->getExpensesForCategory(CategoryEnum::SUPERMARKET->value);
-    }
-
-    public function getFuelChartData(): Collection
-    {
-        $helper = new ChartsAction($this->filters());
-
-        return $helper->getExpensesForCategory(CategoryEnum::FUEL->value);
-    }
-
-    public function getAmazonChartData(): Collection
-    {
-        $helper = new ChartsAction($this->filters());
-
-        return $helper->getExpensesForCategory(CategoryEnum::AMAZON->value);
-    }
-
-
     public function getResults()
     {
-        $this->superMarketTotal = $this->superMarketTotal();
-        $this->amazonTotal = $this->amazonTotal();
-        $this->fuelTotal = $this->fuelTotal();
-        $this->energyTotal = $this->energyTotal();
-        $this->gymnasticsTotal = $this->gymnasticsTotal();
-        $this->childcareTotal = $this->childcareTotal();
-        $this->clothesTotal = $this->clothesTotal();
-        $this->kaliaTotal = $this->kaliaTotal();
-        $this->superMarketChartData = $this->getSupermarketChartData();
-        $this->fuelChartData = $this->getFuelChartData();
-        $this->amazonChartData = $this->getAmazonChartData();
+        $totalAmountBuilder = new TotalAmountBuilder(new TotalAmountAction($this->filters()));
+        $chartDataBuilder = new ChartDataBuilder(new ChartsAction($this->filters()));
+        $results = $totalAmountBuilder->getTotalAmounts();
+        $chartData = $chartDataBuilder->getChartData();
+        $this->superMarketTotal = $results['superMarketTotal'];
+        $this->amazonTotal = $results['amazonTotal'];
+        $this->fuelTotal = $results['fuelTotal'];
+        $this->energyTotal = $results['energyTotal'];
+        $this->gymnasticsTotal = $results['gymnasticsTotal'];
+        $this->childcareTotal = $results['childcareTotal'];
+        $this->clothesTotal = $results['clothesTotal'];
+        $this->kaliaTotal = $results['kaliaTotal'];
+        $this->superMarketChartData = $chartData['superMarketChartData'];
+        $this->fuelChartData = $chartData['fuelChartData'];
+        $this->amazonChartData = $chartData['amazonChartData'];
     }
 
     public function render()
