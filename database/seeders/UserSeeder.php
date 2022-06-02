@@ -17,8 +17,8 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->create(['name' => 'George', 'email' => 'gblisidis@mail.com']);
-        User::factory()->create(['name' => 'Zina', 'email' => 'zskoufa@mail.com']);
+        User::factory()->create(['name' => 'George', 'email' => 'gblisidis@gmail.com']);
+        User::factory()->create(['name' => 'Zina', 'email' => 'zskoufa@gmail.com']);
 
         foreach (CategoryEnum::cases() as $category){
             Category::create(['name' => $category->value])->save();
