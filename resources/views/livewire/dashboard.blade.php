@@ -28,9 +28,23 @@
             </div>
         </div>
     </div>
+    <div class="h-16 bg-custom-beige px-6 flex items-center">
+        <h3 class="font-bold">Averages per Month:</h3>
+        <div class="ml-10 ">
+            <div class="flex space-x-3">
+                @foreach($averages as $categoryAverage)
+                    <div>{{ $categoryAverage['name'] }}: {{  number_format($categoryAverage['value'], 2) }}</div>
+                @if(!$loop->last)
+                    <div>|</div>
+                @endif
+                @endforeach
+
+            </div>
+        </div>
+    </div>
 
     <div class="flex justify-between">
-        <div class="mt-6 px-6 max-w-md">
+        <div class="mt-6 px-6 max-w-lg">
             <div class="grid grid-cols-2 gap-4">
                 <x-dashboard.expense-card title="Supermarket">
                     {{ number_format($superMarketTotal / 100, 2) }}
@@ -60,8 +74,8 @@
                     {{ number_format($clothesTotal / 100, 2) }}
                 </x-dashboard.expense-card>
 
-                <x-dashboard.expense-card title="Kalia">
-                    {{ number_format($kaliaTotal / 100, 2) }}
+                <x-dashboard.expense-card title="Bodyshop">
+                    {{ number_format($bodyshopTotal / 100, 2) }}
                 </x-dashboard.expense-card>
             </div>
         </div>

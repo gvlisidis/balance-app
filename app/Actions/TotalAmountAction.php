@@ -25,4 +25,13 @@ class TotalAmountAction
                 Category::query()->where('name', 'LIKE', $category)->first()->id)
             ->sum('amount');
     }
+
+    public function calculateAverageAmount(string $category): float
+    {
+        return (Expense::with('category')
+            ->whereYear('issued_at', $this->filters['year'])
+            ->where('category_id',
+                Category::query()->where('name', 'LIKE', $category)->first()->id)
+            ->sum('amount') / 100)/ (now()->month - 1);
+    }
 }

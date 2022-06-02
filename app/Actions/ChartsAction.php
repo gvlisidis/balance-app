@@ -13,18 +13,18 @@ class ChartsAction
 
     public array $filters = [];
     public $colors = [
-        'January' => '#f6ad55',
-        'February' => '#fc8181',
-        'March' => '#90cdf4',
-        'April' => '#66DA26',
-        'May' => '#cbd5e0',
-        'June' => '#cbd5e0',
-        'July' => '#fc8181',
-        'August' => '#90cdf4',
-        'September' => '#66DA26',
-        'October' => '#f6ad55',
-        'November' => '#cbd5e0',
-        'December' => '#90cdf4',
+        'January' => '#1D4ED8',
+        'February' => '#A21CAF',
+        'March' => '#C2410C',
+        'April' => '#4D7C0F',
+        'May' => '#CD5C5C',
+        'June' => '#1D4ED8',
+        'July' => '#881337',
+        'August' => '#1E293B',
+        'September' => '#134E4A',
+        'October' => '#404040',
+        'November' => '#A21CAF',
+        'December' => '#701A75',
     ];
 
     public function __construct(array $filters)
@@ -56,7 +56,7 @@ class ChartsAction
                 ->setTitle($title)
                 ->setLegendVisibility(false)
                 ->setDataLabelsEnabled(true)
-                ->setColumnWidth(60)
+                ->setColumnWidth(70)
                 ->withoutGrid()
             );
     }

@@ -155,7 +155,7 @@ class SuperMarketKeywordsSeeder extends Seeder
 
         Keyword::create( [
             'keywords' => ['k kourou- paradeli 32 home stick bp', 'kourou- paradeli', 'paradeli', 'kourou', 'kourou-', 'candice dean banana set bp', 'candice dean'],
-            'category_id' => Category::query()->where('name', 'LIKE', CategoryEnum::KALIA->value)->first()->id,
+            'category_id' => Category::query()->where('name', 'LIKE', CategoryEnum::BODYSHOP->value)->first()->id,
         ]);
 
         Keyword::create( [

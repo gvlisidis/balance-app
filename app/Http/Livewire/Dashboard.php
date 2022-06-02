@@ -22,10 +22,11 @@ class Dashboard extends Component
     public int $energyTotal;
     public int $childcareTotal;
     public int $clothesTotal;
-    public int $kaliaTotal;
+    public int $bodyshopTotal;
     public $superMarketChartData;
     public $fuelChartData;
     public $amazonChartData;
+    public $averages;
 
     protected $listeners = [
         //'categoryUpdated' => 'getResults',
@@ -61,10 +62,11 @@ class Dashboard extends Component
         $this->gymnasticsTotal = $results['gymnasticsTotal'];
         $this->childcareTotal = $results['childcareTotal'];
         $this->clothesTotal = $results['clothesTotal'];
-        $this->kaliaTotal = $results['kaliaTotal'];
+        $this->bodyshopTotal = $results['bodyshopTotal'];
         $this->superMarketChartData = $chartData['superMarketChartData'];
         $this->fuelChartData = $chartData['fuelChartData'];
         $this->amazonChartData = $chartData['amazonChartData'];
+        $this->averages = $totalAmountBuilder->getAverages();
     }
 
     public function render()
