@@ -25,10 +25,14 @@
 
             <!-- Page Content -->
             <main>
+                <button x-data="{}" x-on:click="window.livewire.emitTo('create-todo-item', 'show')" class="w-10 h-10 rounded-full bg-indigo-500 text-white font-semibold text-xl fixed bottom-2 right-2">
+                    +
+                </button>
                 {{ $slot }}
             </main>
         </div>
         @livewireScripts
         @livewireChartsScripts
+    <livewire:create-todo-item/>
     </body>
 </html>

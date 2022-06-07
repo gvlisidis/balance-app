@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\TodoController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function (){
@@ -27,6 +28,10 @@ Route::middleware(['auth'])->group(function (){
         Route::get('{category}', [CategoryController::class, 'edit'])->name('edit');
         Route::patch('{category}', [CategoryController::class, 'update'])->name('update');
         Route::delete('{category}', [CategoryController::class, 'delete'])->name('delete');
+    });
+
+    Route::prefix('new-ideas')->name('todo.')->group(function (){
+        Route::get('', [TodoController::class, 'index'])->name('index');
     });
 });
 
