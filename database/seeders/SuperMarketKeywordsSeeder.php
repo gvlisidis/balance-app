@@ -173,5 +173,10 @@ class SuperMarketKeywordsSeeder extends Seeder
             'category_id' => Category::query()->where('name', 'LIKE', CategoryEnum::FITNESS->value)->first()->id,
         ]);
 
+        Keyword::create( [
+            'keywords' => ['schoolgatewa*durha stocktonontee vis', 'schoolgatewa*durha'],
+            'category_id' => Category::query()->where('name', 'LIKE', CategoryEnum::SCHOOL_CLUBS->value)->first()->id,
+        ]);
+
     }
 }

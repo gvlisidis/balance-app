@@ -49,4 +49,5 @@ enum CategoryEnum: string
     case LEISURE = 'leisure';
     case JUNK_FOOD = 'junk food';
     case BODYSHOP = 'body shop';
+    case SCHOOL_CLUBS = 'school clubs';
 }
