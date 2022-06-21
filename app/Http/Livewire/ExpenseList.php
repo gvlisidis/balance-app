@@ -25,7 +25,7 @@ class ExpenseList extends Component
     public $selectedCategory = 'all';
     public $selectedType= 'all';
     public $selectedMonth= 13;
-    public $perPage = '10';
+    public $perPage = 20;
 
     public $totalMonthDebit;
     public $totalMonthCredit;

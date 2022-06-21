@@ -8,7 +8,7 @@
                         <input type="file" name="monthly_expenses" class="h-10 rounded-sm text-gray-700 w-96" />
                     </div>
                     <div class="flex">
-                        <button class="font-medium bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md">Save</button>
+                        <button class="font-medium bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md">Upload</button>
                     </div>
                 </form>
             </div>
