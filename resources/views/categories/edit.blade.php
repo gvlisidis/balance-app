@@ -1,17 +1,3 @@
 <x-app-layout>
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white shadow-sm sm:rounded-lg h-52 p-10 ">
-                <form action="{{ route('categories.update', $category) }}" method="post" class="flex items-center">
-                    @method('patch')
-                    @csrf
-                    <div>
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" class="h-10 rounded-sm text-gray-700 px-3 w-96 ml-5" value="{{ $category->name }}" />
-                    </div>
-                    <button class="font-medium ml-5 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md">Update</button>
-                </form>
-            </div>
-        </div>
-    </div>
+    <livewire:category-edit :category="$category"></livewire:category-edit>
 </x-app-layout>

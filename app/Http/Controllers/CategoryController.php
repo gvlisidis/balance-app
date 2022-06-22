@@ -10,7 +10,7 @@ class CategoryController extends Controller
     public function index()
     {
         return view('categories.index', [
-            'categories' => Category::all(),
+            'categories' => Category::with('keyword')->paginate(20),
         ]);
     }
 
