@@ -80,8 +80,8 @@
             </div>
         </div>
         <div class="px-6">
-            <div class="flex space-x-5">
-                <div class="w-96 h-52 bg-white mt-6 rounded-md">
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-5">
+                <div class="w-[700px] h-72 bg-white mt-6 rounded-md">
                     @if($supermarketChart->data->isNotEmpty())
                         <livewire:livewire-column-chart
                             :column-chart-model="$supermarketChart"
@@ -92,7 +92,7 @@
                         </div>
                     @endif
                 </div>
-                <div class="w-96 h-52 bg-white mt-6 rounded-md">
+                <div class="w-[700px] h-72 bg-white mt-6 rounded-md">
                     @if($fuelChart->data->isNotEmpty())
                         <livewire:livewire-column-chart
                             :column-chart-model="$fuelChart"
@@ -103,7 +103,7 @@
                         </div>
                     @endif
                 </div>
-                <div class="w-96 h-52 bg-white mt-6 rounded-md">
+                <div class="w-[700px] h-72 bg-white mt-6 rounded-md">
                     @if($amazonChart->data->isNotEmpty())
                         <livewire:livewire-column-chart
                             :column-chart-model="$amazonChart"
