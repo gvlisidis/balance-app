@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Category;
+use App\Models\Keyword;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Livewire\Component;
@@ -29,11 +30,14 @@ class CategoryEdit extends Component
     public function addKeyword()
     {
         $keywordModel = $this->category->keyword;
-        $keywords = $keywordModel->keywords;
+        $keywords = $keywordModel->keywords ?? [];
+
         array_push($keywords, Str::lower($this->keyword));
-        $keywordModel->update([
-            'keywords' => $keywords,
-        ]);
+
+        Keyword::updateOrCreate(
+            ['category_id' => $this->category->id],
+            ['keywords' => $keywords,]
+        );
 
         $this->reset('keyword');
     }

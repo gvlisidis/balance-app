@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCategoryRequest;
 use App\Models\Category;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -21,7 +22,10 @@ class CategoryController extends Controller
 
     public function store(StoreCategoryRequest $request)
     {
-        Category::create($request->validated());
+        DB::transaction(function () use ($request){
+            $category = Category::create($request->validated());
+            $category->keyword()->create(['keywords' => []]);
+        });
 
         return to_route('categories.index');
     }

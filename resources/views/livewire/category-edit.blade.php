@@ -52,7 +52,7 @@
                                     @csrf
                                     <div class="space-x-4">
                                         <label for="keyword">Add Keyword</label>
-                                        <input type="text" id="keyword" wire:model.debounce.500ms="keyword"
+                                        <input type="text" id="keyword" wire:model.defer="keyword"
                                                name="keyword" class="rounded-sm border border-gray-400 h-10 w-60"/>
                                         <button
                                             class="font-medium bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-sm"
