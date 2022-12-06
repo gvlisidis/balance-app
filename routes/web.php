@@ -1,8 +1,6 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ExpenseController;
-use App\Http\Controllers\TodoController;
+use App\Http\Controllers\{CategoryController, ExpenseController, TodoController, MaintenanceController};
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function (){
@@ -32,6 +30,10 @@ Route::middleware(['auth'])->group(function (){
 
     Route::prefix('new-ideas')->name('todo.')->group(function (){
         Route::get('', [TodoController::class, 'index'])->name('index');
+    });
+
+    Route::prefix('maintenance')->name('maintenance.')->group(function (){
+        Route::get('', [MaintenanceController::class, 'index'])->name('index');
     });
 });
 

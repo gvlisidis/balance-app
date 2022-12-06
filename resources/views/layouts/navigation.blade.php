@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('todo.index')" :active="request()->routeIs('todo.index')">
                         {{ __('New ideas') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('maintenance.index')" :active="request()->routeIs('maintenance.index')">
+                        {{ __('Maintenance') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -77,6 +80,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('todo.index')" :active="request()->routeIs('todo.index')">
                 {{ __('New ideas') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('maintenance.index')" :active="request()->routeIs('maintenance.index')">
+                {{ __('Maintenance') }}
             </x-responsive-nav-link>
         </div>
 
