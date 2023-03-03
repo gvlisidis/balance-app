@@ -1,7 +1,7 @@
 <x-app-layout>
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white shadow-sm sm:rounded-lg ">
+    <div class="p-3">
+        <div class="mx-auto w-full">
+            <div class="bg-white shadow-sm rounded-sm ">
                 <div class="border-b-2 border-gray-400 flex items-center justify-between">
                     <p class="p-6 text-2xl font-semibold">Categories</p>
                     <div class="p-6">

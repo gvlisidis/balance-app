@@ -1,5 +1,5 @@
 <div>
-    <x-modal wire:model="show">
+    <x-modal wire:model="show" style="display: none">
         <div class="border-b-2 border-gray-300">
             <h3 class="font-semibold text-lg px-6 py-3">New idea? Add it below!</h3>
         </div>

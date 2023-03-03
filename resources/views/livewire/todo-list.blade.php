@@ -1,5 +1,5 @@
-<div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-    <div class="bg-white shadow-sm sm:rounded-sm ">
+<div class="w-full mx-auto ">
+    <div class="bg-white shadow-sm rounded-sm ">
         <div class="text-2xl font-semibold flex items-center justify-between">
             <p class="p-6">New Ideas</p>
         </div>

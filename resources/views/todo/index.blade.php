@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="py-12">
+    <div class="p-3">
         <livewire:todo-list/>
     </div>
 </x-app-layout>

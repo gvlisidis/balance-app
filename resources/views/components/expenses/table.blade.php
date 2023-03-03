@@ -42,7 +42,7 @@
         </tr>
     @empty
         <tr>
-            <td class="px-6">No expenses yet</td>
+            <td class="p-6">No expenses yet</td>
         </tr>
     @endforelse
     </tbody>

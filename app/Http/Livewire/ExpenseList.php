@@ -25,7 +25,8 @@ class ExpenseList extends Component
     public $selectedCategory = 'all';
     public $selectedType= 'all';
     public $selectedMonth= 13;
-    public $perPage = 20;
+    public int $selectedYear;
+    public $perPage = 40;
 
     public $totalMonthDebit;
     public $totalMonthCredit;
@@ -48,6 +49,7 @@ class ExpenseList extends Component
     public function mount()
     {
         $this->selectedMonth = now()->month - 2;
+        $this->selectedYear = now()->year;
     }
 
     public function clearSearchTerm()
@@ -136,6 +138,7 @@ class ExpenseList extends Component
             ->when($this->selectedMonth < 13, function ($query){
                 $query->whereMonth('issued_at', $this->selectedMonth + 1);
             })
+            ->whereYear('issued_at', $this->selectedYear)
             ->where('type',Expense::CREDIT)
             ->sum('amount');
 
@@ -143,6 +146,7 @@ class ExpenseList extends Component
             ->when($this->selectedMonth < 13, function ($query){
                 $query->whereMonth('issued_at', $this->selectedMonth + 1);
             })
+            ->whereYear('issued_at', $this->selectedYear)
             ->where('type',Expense::DEBIT)
             ->sum('amount');
 
@@ -155,7 +159,7 @@ class ExpenseList extends Component
             ->when($this->selectedMonth < 13, function ($query){
                 $query->whereMonth('issued_at', $this->selectedMonth + 1);
             })
-            ->whereYear('issued_at', now()->year)
+            ->whereYear('issued_at', $this->selectedYear)
             ->when($this->searchTerm, function ($query) {
                 $query->where('label', 'LIKE', '%'.$this->searchTerm.'%');
             })->when($this->selectedCategory !== 'all', function ($query) {
