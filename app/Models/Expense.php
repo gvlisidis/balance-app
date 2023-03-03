@@ -24,11 +24,8 @@ class Expense extends Model
 
     protected $casts = [
         'amount' => 'integer',
-    ];
-
-    protected $dates = [
-        'issued_at',
-        'deleted_at'
+        'issued_at' => 'datetime',
+        'deleted_at' => 'datetime',
     ];
 
     protected $appends = [
