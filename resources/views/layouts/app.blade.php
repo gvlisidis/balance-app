@@ -15,7 +15,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @livewireStyles
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased {{ app()->environment('local') ? 'debug-screens' : '' }}">
         <div class="min-h-screen bg-custom-gray">
             @include('layouts.navigation')
 

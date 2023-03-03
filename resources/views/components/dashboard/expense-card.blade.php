@@ -1,5 +1,5 @@
 
-<div {{ $attributes->merge(['class' => 'text-sm bg-white rounded-md shadow-md']) }}>
+<div {{ $attributes->merge(['class' => 'text-xxs sm:text-sm bg-white rounded-md shadow-md']) }}>
     <div class="border-b border-gray-300">
         <h3 class="px-2 py-1">{{ $title }}</h3>
     </div>

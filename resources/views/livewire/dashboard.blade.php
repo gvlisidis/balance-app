@@ -1,7 +1,7 @@
 <div class="overflow-hidden">
 
     {{--Filters--}}
-    <div class="bg-white px-6 py-4">
+    <div class="bg-white px-6 py-2">
         <div class="flex items-center space-x-6">
             <div>
                 <select wire:model.lazy="selectedYear" name="year" id="year"
@@ -29,8 +29,8 @@
             </div>
         </div>
     </div>
-    <div class="h-16 bg-custom-beige px-6 flex items-center">
-        <h3 class="font-bold">Averages per Month:</h3>
+    <div class="h-12 bg-custom-beige px-6 flex items-center text-xxs sm:text-sm ">
+        <h3 class="font-semibold">Averages per Month:</h3>
         <div class="ml-10 ">
             <div class="flex space-x-3">
                 @foreach($averages as $categoryAverage)
@@ -81,37 +81,37 @@
             </div>
         </div>
         <div class="px-6">
-            <div class="grid grid-cols-1 xl:grid-cols-2 gap-5">
-                <div class="w-[700px] h-72 bg-white mt-6 rounded-md">
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 mt-4">
+                <div class="w-96 h-72 bg-white rounded-md">
                     @if($supermarketChart->data->isNotEmpty())
                         <livewire:livewire-column-chart
                             :column-chart-model="$supermarketChart"
                         />
                     @else
                         <div class="w-full h-full flex justify-center items-center">
-                            No data for the year {{ $selectedYear }}
+                            No supermarket data for the year {{ $selectedYear }}
                         </div>
                     @endif
                 </div>
-                <div class="w-[700px] h-72 bg-white mt-6 rounded-md">
+                <div class="w-96 h-72 bg-white rounded-md">
                     @if($fuelChart->data->isNotEmpty())
                         <livewire:livewire-column-chart
                             :column-chart-model="$fuelChart"
                         />
                     @else
                         <div class="w-full h-full flex justify-center items-center">
-                            No data for the year {{ $selectedYear }}
+                            No fuel data for the year {{ $selectedYear }}
                         </div>
                     @endif
                 </div>
-                <div class="w-[700px] h-72 bg-white mt-6 rounded-md">
+                <div class="w-96 h-72 bg-white rounded-md">
                     @if($amazonChart->data->isNotEmpty())
                         <livewire:livewire-column-chart
                             :column-chart-model="$amazonChart"
                         />
                     @else
                         <div class="w-full h-full flex justify-center items-center">
-                            No data for the year {{ $selectedYear }}
+                            No Amazon data for the year {{ $selectedYear }}
                         </div>
                     @endif
                 </div>
