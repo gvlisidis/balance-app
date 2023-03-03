@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MonthlyExpensesFileRequest;
 use App\Http\Requests\StoreExpenseRequest;
 use App\Http\Requests\UpdateExpenseRequest;
 use App\Imports\ExpensesImport;
@@ -49,9 +50,9 @@ class ExpenseController extends Controller
         return view('expenses.import-file');
     }
 
-    public function uploadFile()
+    public function uploadFile(MonthlyExpensesFileRequest $request)
     {
-        Excel::import(new ExpensesImport(), request()->file('monthly_expenses'));
+        Excel::import(new ExpensesImport(), $request->file('monthly_expenses'));
 
         return to_route('expenses.index');
     }
