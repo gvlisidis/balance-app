@@ -18,6 +18,10 @@ class ExpensesImport implements ToModel
     {
         $helper = new ExpenseFormatterAction();
 
+        if($row[0] === null || $row[1] === null ) {
+            return;
+        }
+
         return new Expense([
             'user_id' => $row[4],
             'category_id' => $helper->assignCategory($row[1]),
