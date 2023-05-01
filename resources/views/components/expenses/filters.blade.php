@@ -52,6 +52,15 @@
                 <option value="2023">2023</option>
             </select>
         </div>
+        <div class="ml-4 flex items-center">
+            <p class="text-sm text-gray-600">Sort by: </p>
+            <select wire:model.lazy="sortBy" wire:change.debounce500ms="$emit('sortByUpdated')"
+                    name="sort-by" id=""
+                    class="h-full ml-2 rounded-sm text-gray-600 border border-gray-400 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-xs">
+                <option value="">-</option>
+                <option value="amount">Amount</option>
+            </select>
+        </div>
     </div>
     <div class="h-full flex items-center">
         <p class="text-xs text-gray-600">Results per page: </p>

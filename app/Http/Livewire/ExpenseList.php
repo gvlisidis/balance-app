@@ -19,11 +19,13 @@ class ExpenseList extends Component
         'monthUpdated' => 'getResults',
         'paginationUpdated' => 'getResults',
         'typeUpdated' => 'getResults',
+        'sortByUpdated' => 'getResults',
     ];
 
     public $searchTerm = '';
     public $selectedCategory = 'all';
     public $selectedType= 'all';
+    public $sortBy= '';
     public $selectedMonth= 13;
     public int $selectedYear;
     public $perPage = 40;
@@ -167,6 +169,9 @@ class ExpenseList extends Component
             })
             ->when($this->selectedType !== 'all', function ($query){
                 $query->where('type', $this->selectedType);
+            })
+            ->when($this->sortBy !== '' , function ($query) {
+                $query->orderByDesc($this->sortBy);
             })
             ->paginate($this->perPage);
     }
