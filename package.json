@@ -17,5 +17,8 @@
         "tailwindcss": "^3.0.18",
         "tailwindcss-debug-screens": "^2.2.1",
         "vite": "^4.1.4"
+    },
+    "dependencies": {
+        "chart.js": "^4.3.0"
     }
 }

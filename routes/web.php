@@ -33,6 +33,10 @@ Route::middleware(['auth'])->group(function (){
     Route::prefix('new-ideas')->name('todo.')->group(function (){
         Route::get('', [TodoController::class, 'index'])->name('index');
     });
+
+    Route::get('/test-page', function (){
+        return view('test-page');
+    });
 });
 
 require __DIR__.'/auth.php';
