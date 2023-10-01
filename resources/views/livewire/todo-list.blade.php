@@ -34,7 +34,7 @@
                         <form action="#" method="post" class="space-y-4">
                             @csrf
                             <input type="checkbox"
-                                   {{ $todoItem->done ? 'checked' : '' }} wire:change.debounce500ms="$emit('toggleState', {{ $todoItem->id }})"
+                                   {{ $todoItem->done ? 'checked' : '' }} wire:change.debounce500ms="$dispatch('toggleState', {todoItem: {{$todoItem->id}})"
                                    class="rounded-full">
                         </form>
                     </td>

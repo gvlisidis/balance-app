@@ -1,5 +1,5 @@
 <div     x-data="{
-        show: @entangle($attributes->wire('model')).defer
+        show: @entangle($attributes->wire('model'))
     }"
          x-show="show"
          x-on:keydown.escape.window="show = false"

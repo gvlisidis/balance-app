@@ -16,7 +16,7 @@
                                 <label for="name" class="font-semibold">Name</label>
                                 <input type="text" id="name" name="name"
                                        class="h-10 rounded-sm text-gray-700 px-3 w-96 ml-5"
-                                      wire:model.debounce.500ms="name"/>
+                                      wire:model.live.debounce.500ms="name"/>
                                 <button
                                     class="font-medium bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-sm"
                                     wire:click.prevent="updateName()">Update
@@ -52,7 +52,7 @@
                                     @csrf
                                     <div class="space-x-4">
                                         <label for="keyword">Add Keyword</label>
-                                        <input type="text" id="keyword" wire:model.defer="keyword"
+                                        <input type="text" id="keyword" wire:model="keyword"
                                                name="keyword" class="rounded-sm border border-gray-400 h-10 w-60"/>
                                         <button
                                             class="font-medium bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-sm"

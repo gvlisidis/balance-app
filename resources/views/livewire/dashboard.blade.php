@@ -4,8 +4,8 @@
     <div class="bg-white px-6 py-2">
         <div class="flex items-center space-x-6">
             <div>
-                <select wire:model.lazy="selectedYear" name="year" id="year"
-                        wire:change.debounce500ms="$emit('yearUpdated')"
+                <select wire:model.blur="selectedYear" name="year" id="year"
+                        wire:change.debounce500ms="$dispatch('yearUpdated')"
                         class="h-full ml-2 rounded-sm text-gray-600 border border-gray-400 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-xs">
                     <option value="2018">2018</option>
                     <option value="2019">2019</option>
@@ -17,7 +17,7 @@
             </div>
 
             <div>
-                <select wire:model.lazy="selectedMonth" wire:change.debounce500ms="$emit('monthUpdated')"
+                <select wire:model.blur="selectedMonth" wire:change.debounce500ms="$dispatch('monthUpdated')"
                         name="month" id="month"
                         class="h-full ml-2 rounded-sm text-gray-600 border border-gray-400 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-xs">
                     <option value="13">All</option>
@@ -83,7 +83,7 @@
         <div class="px-6">
             <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 mt-4">
                 <div class="w-96 h-72 bg-white rounded-sm">
-                    @if($supermarketChart->data->isNotEmpty())
+                    @if(!empty($supermarketChart->toArray()['data']))
                         <livewire:livewire-column-chart
                             :column-chart-model="$supermarketChart"
                         />
@@ -94,7 +94,7 @@
                     @endif
                 </div>
                 <div class="w-96 h-72 bg-white rounded-sm">
-                    @if($fuelChart->data->isNotEmpty())
+                    @if(!empty($fuelChart->toArray()['data']))
                         <livewire:livewire-column-chart
                             :column-chart-model="$fuelChart"
                         />
@@ -105,7 +105,7 @@
                     @endif
                 </div>
                 <div class="w-96 h-72 bg-white rounded-sm">
-                    @if($amazonChart->data->isNotEmpty())
+                    @if(!empty($amazonChart->toArray()['data']))
                         <livewire:livewire-column-chart
                             :column-chart-model="$amazonChart"
                         />
